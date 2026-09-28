@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>洪伟 · Wally Hung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4f0e8;
+    --ink: #1b1a17;
+    --muted: #6d675f;
+    --line: #e3dcd2;
+    --accent: #1e3a4c;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 36px 32px 128px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .mark { font-size: 14px; letter-spacing: 0.08em; color: var(--muted); }
+  .actions { display: flex; gap: 8px; }
+  button {
+    font: inherit; cursor: pointer; color: var(--ink);
+    background: transparent; border: 1px solid var(--line);
+    border-radius: 999px; height: 38px; padding: 0 16px; font-size: 14px;
+  }
+  button.solid { background: var(--accent); color: #f7f4ee; border-color: var(--accent); }
+  .hero { padding: 88px 0 8px; }
+  h1 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 600;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+  .en-name {
+    font-family: "Newsreader", "Noto Serif SC", serif;
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin: 10px 0 0;
+    letter-spacing: -0.02em;
+  }
+  .lede {
+    max-width: 18em;
+    margin: 40px 0 0;
+    font-size: 22px;
+    line-height: 1.65;
+    color: #3f3c37;
+  }
+  .meta {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .meta a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  h2 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 96px 0 8px;
+    font-feature-settings: "kern";
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 56px 48px;
+    margin-top: 36px;
+  }
+  .metrics b {
+    display: block;
+    font-family: "Newsreader", "Noto Serif SC", serif;
+    font-weight: 500;
+    font-size: clamp(32px, 4vw, 44px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--accent);
+  }
+  .metrics span {
+    display: block;
+    margin-top: 12px;
+    max-width: 16em;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .story {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 28px;
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+  }
+  .story .idx {
+    font-family: "Newsreader", serif;
+    color: var(--muted);
+    font-size: 20px;
+    padding-top: 6px;
+  }
+  .story h3 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 600;
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .story p { margin: 18px 0 0; max-width: 36em; }
+  .story .quiet { color: var(--muted); }
+  .row {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px;
+    gap: 24px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+  }
+  .row strong { display: block; font-weight: 500; }
+  .row em { font-style: normal; color: var(--muted); font-size: 15px; }
+  .row p { margin: 0; }
+  .row time { color: var(--muted); font-size: 15px; text-align: right; }
+  .skills { margin-top: 28px; max-width: 40em; color: #3f3c37; font-size: 18px; line-height: 1.9; }
+  .skills b { font-weight: 500; }
+  .foot { margin-top: 88px; color: var(--muted); font-size: 15px; }
+  [hidden] { display: none !important; }
+  @media (max-width: 800px) {
+    .page { padding: 24px 20px 80px; }
+    .hero { padding-top: 48px; }
+    .metrics, .story, .row { grid-template-columns: 1fr; gap: 12px; }
+    .metrics { gap: 36px; }
+    .row time { text-align: left; }
+    h2 { margin-top: 72px; }
+  }
+  @media print {
+    .actions { display: none; }
+    body { background: white; }
+    .page { max-width: none; }
+    .story, .row, .metrics > div { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div class="mark">洪伟 · Wally Hung</div>
+    <div class="actions">
+      <button type="button" id="lang">English</button>
+      <button type="button" class="solid" id="print">打印</button>
+    </div>
+  </header>
+
+  <div id="zh">
+    <section class="hero">
+      <h1>洪伟</h1>
+      <p class="en-name">Wally Hung</p>
+      <p class="lede">十六年。先把开源大数据引擎跑稳，再把同一套能力做成游戏广告、推荐和湖仓上的结果。</p>
+      <div class="meta">
+        <span>心动科技 · TapTap · 大数据开发工程师</span>
+        <span>2023.05 — 至今</span>
+        <span>177-4081-7241</span>
+        <a href="mailto:hongwei200612@gmail.com">hongwei200612@gmail.com</a>
+      </div>
+    </section>
+
+    <h2>结果</h2>
+    <div class="metrics">
+      <div><b>+2,000 万</b><span>首页广告实时特征，保守年增收</span></div>
+      <div><b>CPM +5%</b><span>实时特征补到 iOS 之后</span></div>
+      <div><b>成本 −80%</b><span>ADN 实时链路的月度开支</span></div>
+      <div><b>3.7 → 2.8 PB</b><span>DLF 存储。小文件从 650 万降到 160 万</span></div>
+      <div><b>1.5 → 0.5 天</b><span>粗排样本处理加训练</span></div>
+      <div><b>15,000 节点</b><span>拼多多 Flink on Kubernetes</span></div>
+    </div>
+
+    <h2>三件事</h2>
+    <article class="story">
+      <div class="idx">01</div>
+      <div>
+        <h3>游戏广告，从天级特征做成实时。</h3>
+        <p class="quiet">首页决策等不了隔夜的特征。我把 user、item，以及 app、素材、UGC 做成非天级实时特征，归因做准，再从 Android 补到 iOS，并收进 IEM 特征平台，推荐模型也能复用。</p>
+        <p>首页效果提升 2% 以上。安装特征和 iOS 特征的开发，不再每次从零开始。</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="idx">02</div>
+      <div>
+        <h3>湖仓迁移，用双跑把风险留下来。</h3>
+        <p class="quiet">MaxCompute 要迁，广告和训练不能断。选型落在 Spark on 数据湖。DataWorks、EMR Serverless Spark 和 DLF 上，900 多张表进入双跑：同步、翻译、校验、权限和长任务，都在这条链路上收口。</p>
+        <p>部分 BI 从大约 75 秒到 200 毫秒。Hologres 从 2.2 升到 4.x，避开产品 EOS。</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="idx">03</div>
+      <div>
+        <h3>引擎是改过源码的，不是只做过运维。</h3>
+        <p class="quiet">唯品会负责 800 多个节点的 Hadoop 引擎，源码调优和热升级。拼多多基于 Flink 1.5 / 1.8 做热重启、热更新和 checkpoint。声网做自研 Flink 发行版，合入社区 900 多个 patch，把峰值约 2000 万 QPS 的日志链路从 Spark 迁到 Flink。</p>
+        <p>后来在 TapTap 用的，是这套手感，不是另一套产品说明书。</p>
+      </div>
+    </article>
+
+    <h2>经历</h2>
+    <div class="row">
+      <div><strong>心动科技 · TapTap</strong><em>大数据开发工程师</em></div>
+      <p>广告、推荐、ADN 的实时与离线，以及湖仓升级。对内服务业务，对外把阿里云产品用到真实负载上。</p>
+      <time>2023 — 至今</time>
+    </div>
+    <div class="row">
+      <div><strong>哔哩哔哩</strong><em>资深研发 · 3-3</em></div>
+      <p>实时计算团队。Flink 容器化，以及 Flink 加 Hudi 的入湖链路。</p>
+      <time>2022</time>
+    </div>
+    <div class="row">
+      <div><strong>声网 Agora</strong><em>架构师 / Leader</em></div>
+      <p>自研 Flink 平台、Prometheus 监控一体、Elasticsearch 稳定性，以及混合云交付从 60 天收到 1 天。</p>
+      <time>2020 — 2022</time>
+    </div>
+    <div class="row">
+      <div><strong>拼多多</strong><em>Flink 核心引擎</em></div>
+      <p>Flink 1.5 / 1.8 的调优、热重启和热更新。十余个集群、约 1.5k 作业，另有 100 多个 Elasticsearch 集群。</p>
+      <time>2018 — 2020</time>
+    </div>
+    <div class="row">
+      <div><strong>唯品会</strong><em>Hadoop 引擎负责人</em></div>
+      <p>MapReduce、Hive、HDFS、YARN。灰度变更和热升级，跨机房流量大约降下一半。</p>
+      <time>2016 — 2018</time>
+    </div>
+    <div class="row">
+      <div><strong>五八同城</strong><em>高级工程师</em></div>
+      <p>无痕埋点，以及 Hadoop / Kafka 平台。</p>
+      <time>2015 — 2016</time>
+    </div>
+    <div class="row">
+      <div><strong>郊区电信实业</strong><em>开发工程师</em></div>
+      <p>电网评审平台。广告统计从 MongoDB 迁到 Hadoop、Hive、Spark。</p>
+      <time>2010 — 2015</time>
+    </div>
+
+    <h2>能力</h2>
+    <p class="skills"><b>开源。</b> Hadoop、Hive、HDFS、YARN、Spark、Flink、Kafka、Flume、Hudi、Elasticsearch、Kubernetes、Prometheus。</p>
+    <p class="skills"><b>阿里云。</b> DataWorks、MaxCompute、EMR Spark、DLF、Paimon、Hologres、StarRocks。</p>
+    <p class="skills"><b>近来。</b> 把排障和开发经验收成大约 150 条 Agent Skill，在权限边界里做查表、排作业和对账，不直接改生产。</p>
+
+    <p class="foot">三峡大学 · 信息与计算科学 · 理学学士 · 2006 — 2010</p>
+  </div>
+
+  <div id="en" hidden>
+    <section class="hero">
+      <h1>Wally Hung</h1>
+      <p class="en-name">洪伟</p>
+      <p class="lede">Sixteen years. First the open-source engines, then the same craft turned into results for gaming ads, recommendation, and a lakehouse.</p>
+      <div class="meta">
+        <span>X.D. Network · TapTap · Big Data Engineer</span>
+        <span>May 2023 — Present</span>
+        <span>177-4081-7241</span>
+        <a href="mailto:hongwei200612@gmail.com">hongwei200612@gmail.com</a>
+      </div>
+    </section>
+
+    <h2>Outcomes</h2>
+    <div class="metrics">
+      <div><b>+¥20M</b><span>Conservative annual lift from homepage ad features</span></div>
+      <div><b>CPM +5%</b><span>After real-time features reached iOS</span></div>
+      <div><b>TCO −80%</b><span>Monthly cost of the ADN realtime path</span></div>
+      <div><b>3.7 → 2.8 PB</b><span>DLF storage. Small files, 6.5M to 1.6M</span></div>
+      <div><b>1.5 → 0.5 day</b><span>Coarse-rank sample processing plus training</span></div>
+      <div><b>15,000 nodes</b><span>Flink on Kubernetes at Pinduoduo</span></div>
+    </div>
+
+    <h2>Three pieces of work</h2>
+    <article class="story">
+      <div class="idx">01</div>
+      <div>
+        <h3>Gaming ads, from daily features to realtime.</h3>
+        <p class="quiet">Homepage decisions could not wait overnight. User, item, app, material, and UGC features became realtime, attribution was made accurate, the path was extended from Android to iOS, and the design landed on the IEM feature platform so recommendation could reuse it.</p>
+        <p>Homepage effect up more than 2%. Install and iOS features stopped being one-off projects.</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="idx">02</div>
+      <div>
+        <h3>A lakehouse move, with the risk kept in dual-run.</h3>
+        <p class="quiet">MaxCompute had to be left without breaking ads or training. The target was Spark on a lake. On DataWorks, EMR Serverless Spark, and DLF, 900+ tables entered dual-run: sync, translation, validation, auth, and long-job stability closed on one path.</p>
+        <p>Some BI went from about 75 seconds to 200 milliseconds. Hologres moved from 2.2 to 4.x, ahead of product EOS.</p>
+      </div>
+    </article>
+    <article class="story">
+      <div class="idx">03</div>
+      <div>
+        <h3>The engines were modified, not merely operated.</h3>
+        <p class="quiet">At Vipshop I owned the Hadoop engine on 800+ nodes, including source-level tuning and hot upgrades. At Pinduoduo I worked on Flink 1.5 / 1.8: hot restart, hot update, and checkpoints. At Agora I shipped an in-house Flink distribution, 900+ community patches, and moved a log path peaking near 20 million QPS from Spark onto Flink.</p>
+        <p>TapTap used that same judgment. Not a product brochure.</p>
+      </div>
+    </article>
+
+    <h2>Experience</h2>
+    <div class="row">
+      <div><strong>X.D. Network · TapTap</strong><em>Big Data Engineer</em></div>
+      <p>Realtime and batch for ads, recommendation, and ADN, plus the lakehouse move. Served business teams, and ran Alibaba Cloud products on real load.</p>
+      <time>2023 — Present</time>
+    </div>
+    <div class="row">
+      <div><strong>Bilibili</strong><em>Senior Engineer · 3-3</em></div>
+      <p>Realtime compute. Flink on Kubernetes, and Flink with Hudi ingestion.</p>
+      <time>2022</time>
+    </div>
+    <div class="row">
+      <div><strong>Agora</strong><em>Architect / Leader</em></div>
+      <p>In-house Flink, a single Prometheus stack, Elasticsearch stability, and hybrid-cloud delivery from 60 days to one.</p>
+      <time>2020 — 2022</time>
+    </div>
+    <div class="row">
+      <div><strong>Pinduoduo</strong><em>Flink core engine</em></div>
+      <p>Tuning, hot restart, and hot update on Flink 1.5 / 1.8. Ten-plus clusters, about 1,500 jobs, and 100+ Elasticsearch clusters.</p>
+      <time>2018 — 2020</time>
+    </div>
+    <div class="row">
+      <div><strong>Vipshop</strong><em>Hadoop engine owner</em></div>
+      <p>MapReduce, Hive, HDFS, YARN. Grey changes and hot upgrades. Cross-datacenter traffic down by about half.</p>
+      <time>2016 — 2018</time>
+    </div>
+    <div class="row">
+      <div><strong>58.com</strong><em>Senior Engineer</em></div>
+      <p>A no-trace tracking platform, and the Hadoop / Kafka platform.</p>
+      <time>2015 — 2016</time>
+    </div>
+    <div class="row">
+      <div><strong>郊区电信实业</strong><em>Software Engineer</em></div>
+      <p>A State Grid review platform. Ad analytics moved from MongoDB onto Hadoop, Hive, and Spark.</p>
+      <time>2010 — 2015</time>
+    </div>
+
+    <h2>Practice</h2>
+    <p class="skills"><b>Open source.</b> Hadoop, Hive, HDFS, YARN, Spark, Flink, Kafka, Flume, Hudi, Elasticsearch, Kubernetes, Prometheus.</p>
+    <p class="skills"><b>Alibaba Cloud.</b> DataWorks, MaxCompute, EMR Spark, DLF, Paimon, Hologres, StarRocks.</p>
+    <p class="skills"><b>Lately.</b> About 150 agent skills for inspecting tables, jobs, and reconciliation, inside permission boundaries. No direct writes to production.</p>
+
+    <p class="foot">China Three Gorges University · Information and Computing Science · B.S. · 2006 — 2010</p>
+  </div>
+</div>
+<script>
+const zh = document.getElementById("zh");
+const en = document.getElementById("en");
+const langBtn = document.getElementById("lang");
+const printBtn = document.getElementById("print");
+let lang = "zh";
+function apply() {
+  const english = lang === "en";
+  zh.hidden = english;
+  en.hidden = !english;
+  document.documentElement.lang = lang;
+  langBtn.textContent = english ? "中文" : "English";
+  printBtn.textContent = english ? "Print" : "打印";
+  document.title = english ? "Wally Hung" : "洪伟 · Wally Hung";
+}
+langBtn.onclick = () => { lang = lang === "zh" ? "en" : "zh"; apply(); };
+printBtn.onclick = () => window.print();
+</script>
+</body>
+</html>
